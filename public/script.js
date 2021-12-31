@@ -7,8 +7,9 @@ fetch('http://localhost:3000/api/v1/getdata')
 		'<td>' + data[index].NOME + '</td>' +
 		'<td>' + data[index].PRECO + '</td>' +
 		'<td>' + data[index].DESCRICAO + '</td>' +
-		'<td><input type="button" value="Editar" onclick=""/><input type="button" value="Excluir" onclick=""/></td>' +
+		'<td><input type="button" value="Excluir" onclick=""/></td>' +
 		'</tr>')
+		$('select').html($('select').html() + `<option>${data[index].IDPRODUTO}</option>`)
 	}
 })
 
