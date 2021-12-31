@@ -37,8 +37,7 @@ app.get('/api/v1/getdata', (req,res)=>{
 })
 
 app.post('/api/v1/register', (req,res)=>{
-	newproduto = {IDPRODUTO: req.body.IDPRODUTO, NOME: req.body.NOME, PRECO: req.body.PRECO, DESCRICAO: req.body.DESCRICAO}
-	con.query('INSERT INTO PRODUTO WHERE VALUES ?', newproduto, (err)=>{
+	con.query('INSERT INTO PRODUTO WHERE VALUES ?', req.body, (err)=>{
 		if (err){
 			throw err
 		}else{
