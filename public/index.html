@@ -11,20 +11,23 @@
 	<form>
 		<label for="nome">Nome: <input type="text" id="nome"/></label>	
 		<label for="preco">Preço: <input type="number" id="preco"/></label>	
-		<label for="desx">Descrição: <input type="text" id="desc"/></label>	
-		<input type="button" value="Enviar" onclick=""/>
+		<label for="desc">Descrição: <input type="text" id="desc"/></label>	
+		<input type="button" value="Enviar" onclick="cadastrarProduto()"/>
 		<input type="button" value="Editar" onclick=""/>
 		<select>
 
 		</select>
 	</form>
 	<table>
+		<thead>
 		<tr>
 			<th>Id</th>
 			<th>Produto</th>
 			<th>Preço</th>
 			<th>Descrição</th>
 		</tr>
+		</thead>
+		<tbody></tbody>
 	</table>
 	<script type="text/javascript" src="script.js"></script>
 </body>

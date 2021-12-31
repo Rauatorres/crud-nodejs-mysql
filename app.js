@@ -37,14 +37,16 @@ app.get('/api/v1/getdata', (req,res)=>{
 })
 
 app.post('/api/v1/register', (req,res)=>{
-	con.query('INSERT INTO PRODUTO WHERE VALUES ?', req.body, (err)=>{
+	console.log('post request recieved')
+	console.log(req.body)
+	con.query('INSERT INTO PRODUTO VALUES (DEFAULT, ?, ?, ?)', [req.body.NOME, req.body.PRECO, req.body.DESCRICAO], (err)=>{
 		if (err){
 			throw err
 		}else{
 			queryAll(res)
 		}
 	})
-
+	
 })
 
 app.listen(3000, ()=>{
