@@ -49,6 +49,18 @@ app.post('/api/v1/register', (req,res)=>{
 	
 })
 
+app.delete('/api/v1/delete', (req, res)=>{
+	console.log('delete request recieved')
+	console.log(req.body)
+	con.query('DELETE FROM PRODUTO WHERE IDPRODUTO = ?', [req.body.IDPRODUTO], (err)=>{
+		if(err){
+			throw err
+		}else{
+			queryAll(res)
+		}
+	})
+})
+
 app.listen(3000, ()=>{
 	console.log('Server started successfully: listening on http://localhost:3000/')
 })

@@ -13,7 +13,7 @@ function showData(data){
 
 		
 
-		'<td><input type="button" value="Excluir" onclick=""/></td>' +  
+		`<td><input type="button" value="Excluir" onclick="deletarProduto(${data[index].IDPRODUTO})"/></td>` +  
 
 		'</tr>')
 
@@ -37,3 +37,12 @@ function cadastrarProduto(){
 	.then(jsondata => showData(jsondata))
 }
 
+function deletarProduto(id){
+	fetch('http://localhost:3000/api/v1/delete', {
+		method: "DELETE",
+		headers: {"Content-Type": "application/json"},
+		body: `{"IDPRODUTO": "${id}"}`
+		})
+	.then(res => res.json())
+	.then(jsondata => showData(jsondata))
+}
