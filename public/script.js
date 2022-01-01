@@ -17,7 +17,7 @@ function showData(data){
 
 		'</tr>')
 
-		$('select').html($('select').html() + `<option>${data[index].IDPRODUTO}</option>`)
+		$('select').html($('select').html() + `<option value="${data[index].IDPRODUTO}">${data[index].IDPRODUTO}</option>`)
 		
 		//$('table').html(index)
 	}
@@ -43,6 +43,19 @@ function deletarProduto(id){
 		headers: {"Content-Type": "application/json"},
 		body: `{"IDPRODUTO": "${id}"}`
 		})
+	.then(res => res.json())
+	.then(jsondata => showData(jsondata))
+}
+
+function editarProduto(id){
+	fetch('http://localhost:3000/api/v1/update', {
+		method: "PUT",
+		headers: {"Content-Type": "application/json"},
+		body: `{"IDPRODUTO": "${$('select').val()}",
+			"NOME": "${$('#nome').val()}",
+			"PRECO": "${$('#preco').val()}",
+			"DESCRICAO": "${$('#desc').val()}"}`
+	})
 	.then(res => res.json())
 	.then(jsondata => showData(jsondata))
 }

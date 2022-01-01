@@ -61,6 +61,19 @@ app.delete('/api/v1/delete', (req, res)=>{
 	})
 })
 
+app.put('/api/v1/update', (req,res)=>{
+	console.log('put request recieved')
+	console.log(req.body)
+	con.query('UPDATE PRODUTO SET NOME = ?, PRECO = ?, DESCRICAO = ? WHERE IDPRODUTO = ?', [req.body.NOME, req.body.PRECO, req.body.DESCRICAO, req.body.IDPRODUTO], (err)=>{
+		if(err){
+			throw err
+		}else{
+			queryAll(res)
+		}
+	})
+	
+})
+
 app.listen(3000, ()=>{
 	console.log('Server started successfully: listening on http://localhost:3000/')
 })
